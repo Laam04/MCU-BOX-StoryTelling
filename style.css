@@ -1,0 +1,298 @@
+/* =================== FUENTES Y VARIABLES =================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --red: #e62429;
+  --red-dark: #b71c1c;
+  --black: #0a0a0a;
+  --gray: #1f1f1f;
+  --white: #ffffff;
+  --accent: #ffd700;
+  --soft-white: #f5f5f5;
+  --transition: 0.4s ease;
+}
+
+/* =================== RESET =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* =================== HERO SECTION =================== */
+.hero {
+  height: 100vh;
+  background: url('https://images7.alphacoders.com/114/1146896.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.section-content {
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+
+}
+
+.hero-logo {
+  max-width: 60%;
+  height: auto;
+  margin-top: 300px;
+  animation: zoomIn 1s ease-in-out;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--red);
+  text-shadow: 2px 2px 10px var(--black);
+  animation: slideInTop 1s ease-out;
+}
+
+.section-subtitle {
+  font-size: 2.2rem;
+  color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* =================== RESUMEN DE DATOS =================== */
+.section-resume {
+  font-size: 3rem;
+  color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.data-summary-box {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  line-height: 2;
+  color: var(--soft-white);
+  margin-bottom: 2rem;
+}
+
+/* =================== SECCIONES GENERALES =================== */
+.section {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #111 0%, #000 100%);
+  margin-bottom: 60px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.content-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.section-description {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.section-summary {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--soft-white);
+  line-height: 1.6;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* =================== GRÁFICOS =================== */
+.chart-container {
+  width: 100%;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(230, 36, 41, 0.3);
+}
+
+/* =================== IMÁGENES LATERALES =================== */
+.section-with-side-image {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.side-image {
+  width: 22vw;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  opacity: 0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  animation: fadeInSide 1.2s ease-out forwards;
+  transition: transform 0.4s ease, opacity 0.6s ease, box-shadow 0.4s ease;
+}
+
+.side-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
+}
+
+.side-image.left { order: 0; }
+.side-image.right { order: 2; }
+
+/* =================== TOOLTIP =================== */
+.tooltip {
+  position: absolute;
+  background-color: #000;
+  color: var(--accent);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  z-index: 999;
+}
+
+/* =================== BOTONES =================== */
+.start-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--red);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+
+.start-btn:hover {
+  background-color: var(--red-dark);
+  transform: scale(1.05);
+}
+
+/* =================== FILTRO FIJO =================== */
+#fixed-filter {
+  font-family: 'Bebas Neue', sans-serif;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 12px 18px;
+  border-radius: 12px;
+  z-index: 999;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+#fixed-filter select {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* =================== INTRO =================== */
+.intro {
+  background-color: #111;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.intro h2 {
+  color: var(--accent);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+/* =================== FOOTER =================== */
+.footer {
+  padding: 30px;
+  background-color: #111;
+  color: #999;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* =================== ANIMACIONES =================== */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInTop {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInSide {
+  0% { opacity: 0; transform: scale(0.7); }
+  100% { opacity: 1; transform: scale(0.9); }
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 900px) {
+  .section-with-side-image { flex-direction: column; }
+  .side-image { display: none; }
+  .hero h1 { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+  .chart-container { padding: 1rem; }
+  .data-summary-box { font-size: 1.4rem; }
+  #fixed-filter { bottom: 20px; top: auto; font-size: 1rem; }
+  #fixed-filter select { font-size: 0.9rem; }
+}

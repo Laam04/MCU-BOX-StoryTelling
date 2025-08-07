@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marvel Data Storytelling</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/assets/marvel-studios-logo.png" type="image/x-icon">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="section-content">
+      <img src="assets/marvel-studios-logo.png" alt="Marvel Logo" class="hero-logo"/>
+      <a href="https://www.kaggle.com/datasets/davidgdong/marvel-cinematic-universe-box-office-dataset" target="_blank" style="  font-family: 'Bebas Neue', sans-serif;
+color: var(--accent); font-size: 2.1rem; text-decoration: underline;">
+      Ver dataset en Kaggle
+    </a>
+      <h1>El Universo Marvel Como Nunca Lo Has Visto</h1>
+      <p class="section-subtitle" >
+        Explora visualmente la evolución y éxito del MCU a través de los datos.
+      </p>
+      
+    </div>
+  </header>
+<!-- RESUMEN DE LOS DATOS -->
+<section class="section reveal glass-card">
+  <div class="content-container">
+    <h2 class="section-resume" >Resumen del Dataset</h2>
+    <p class="section-description" id="data-summary">
+      Cargando datos...
+    </p>
+  </div>
+  <section class="intro">
+  <div class="section-content">
+    <h2>Un viaje a través del Universo Cinematográfico de Marvel</h2>
+    <p>
+      Desde su inicio en 2008 con *Iron Man*, el MCU ha transformado la industria del cine. 
+      En esta visualización interactiva, exploramos cómo han evolucionado sus ingresos, su recepción crítica 
+      y su retorno de inversión, fase por fase.
+    </p>
+    <p>
+      Usa los filtros para navegar por las distintas fases y descubre qué películas brillaron más allá de las expectativas.
+    </p>
+  </div>
+</section>
+
+</section>
+<section class="section reveal glass-card">
+  <div id="fixed-filter">
+  <label for="faseSelector"><strong>Filtrar por Fase del MCU:</strong></label>
+  <select id="faseSelector">
+    <option value="all">Todas las fases</option>
+    <option value="1">Fase 1</option>
+    <option value="2">Fase 2</option>
+    <option value="3">Fase 3</option>
+    <option value="4">Fase 4</option>
+  </select>
+</div>
+
+</section>
+
+  <!-- SECCIONES PRINCIPALES -->
+  <main>
+
+    <!-- Sección 1 -->
+    <section class="section reveal glass-card content-left">
+      <div class="section-with-side-image">
+        <img src="assets/ironman.jpg" alt="Avengers Endgame" class="side-image left" />
+        <div class="content-container">
+          <h2 class="section-title">Recaudación Mundial a lo Largo del Tiempo</h2>
+          <p class="section-description">
+Desde sus inicios con Iron Man en 2008, el MCU no ha dejado de expandirse, tanto en contenido como en impacto económico. Este gráfico de línea temporal muestra cómo cada entrega ha contribuido a la acumulación de taquilla a lo largo de los años.
+Se observan picos notables en películas como The Avengers (2012), Black Panther (2018), Infinity War y el récord absoluto con Endgame (2019).         
+El comportamiento visual permite entender el crecimiento estratégico de Marvel: lanzamientos en fases, agrupaciones de personajes, y momentos culminantes construidos a lo largo de más de una década. </p>
+          <div id="chart1" class="chart-container large-chart"></div>
+          <p class="section-summary">
+            Este gráfico muestra cómo cada película aportó a la expansión global del universo cinematográfico más exitoso de la historia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2 -->
+    <section id="section-budget" class="section reveal glass-card content-right">
+      <div class="section-with-side-image">
+        <div class="content-container">
+          <h2 class="section-title">Presupuesto vs Éxito</h2>
+          <p class="section-description">
+            ¿Gastaron más para ganar más? Descubre cómo la inversión inicial influyó (o no) en el rendimiento financiero.
+            Este gráfico de burbujas compara el presupuesto invertido con la recaudación total de cada película. El tamaño de cada burbuja representa el retorno de inversión (ROI), mientras que su color indica la fase del MCU.
+
+Se evidencia que algunas películas con presupuestos modestos, como Iron Man o Ant-Man, obtuvieron un ROI altísimo, mientras que otras con grandes inversiones, como Endgame, generaron retornos masivos, aunque no siempre proporcionales.
+
+Este análisis revela que no siempre es necesario gastar más para ganar más: el éxito también depende del momento, la expectativa y la conexión con el público.
+          </p>
+          <div id="bubble-chart" class="chart-container large-chart"></div>
+          <p class="section-summary">
+            Algunos éxitos nacieron de presupuestos modestos, mientras que otras superproducciones justificaron cada centavo invertido.
+          </p>
+        </div>
+        <img src="assets/nowayhome.jpg" alt="Iron Man" class="side-image right" />
+      </div>
+    </section>
+
+    <!-- Sección 3 -->
+    <section id="section-roi-phase" class="section reveal glass-card content-left dark-bg">
+      <div class="section-with-side-image">
+        <img src="assets/civilwar.jpg" alt="Captain America: Civil War" class="side-image left" />
+        <div class="content-container">
+          <h2 class="section-title">Distribución de ROI por Fase</h2>
+          <p class="section-description">
+            No todas las fases fueron igual de rentables. Veamos cómo se desempeñó cada una en términos de retorno de inversión.
+            Este gráfico boxplot muestra cómo se distribuyó el retorno de inversión dentro de cada fase del MCU.
+
+En las primeras fases, se observa mayor dispersión: algunas películas arriesgaron más y obtuvieron rendimientos variables. A medida que el universo se consolidó, los resultados se estabilizaron, aunque aún existen sorpresas dentro de cada etapa.
+
+La Fase 3, por ejemplo, muestra una concentración de altos retornos, lo que refleja la madurez del universo Marvel y su dominio comercial antes del cierre de la saga del infinito.
+          </p>
+          <div id="roi-boxplot-container" class="chart-container large-chart"></div>
+          <p class="section-summary">
+            La consolidación del MCU se refleja en la rentabilidad creciente de sus fases, aunque algunas sorpresas se esconden en los datos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 4 -->
+    <section id="section-critics" class="section reveal glass-card content-right">
+      <div class="section-with-side-image">
+        <div class="content-container">
+          <h2 class="section-title">Recepción Crítica</h2>
+          <p class="section-description">
+Más allá del dinero, la crítica ha evaluado cada producción del MCU. Este gráfico muestra la distribución de puntuaciones según el “Tomatometer”, una métrica agregada de críticas especializadas.
+
+Aunque existe un rango variado, es notable que la mayoría de películas se concentra entre el 70% y el 90% de aprobación. Esto indica una recepción generalmente positiva, aunque no perfecta.
+
+Casos destacados como Black Panther o Spider-Man: No Way Home lograron críticas excelentes, elevando el estándar de calidad narrativa, incluso en un universo inicialmente pensado solo como entretenimiento.          </p>
+          <div id="densityChart" class="chart-container large-chart"></div>
+          <p class="section-summary">
+            La recepción crítica ha evolucionado, destacando cómo ciertas películas han elevado el estándar narrativo y artístico del universo.
+          </p>
+        </div>
+        <img src="assets/infinitywar.jpg" alt="Infinity War" class="side-image right" />
+      </div>
+    </section>
+
+    <!-- Sección 5 -->
+    <section id="section-top-roi" class="section reveal glass-card content-left">
+      <div class="section-with-side-image">
+        <img src="assets/endgame.jpg" alt="Endgame" class="side-image left" />
+        <div class="content-container">
+          <h2 class="section-title">Top 10 Películas Más Rentables</h2>
+          <p class="section-description">
+            ¿Quién lidera el ranking del ROI? Estas son las películas que rompieron todos los esquemas de rentabilidad.
+            Aquí se presentan las 10 películas con mayor retorno de inversión (ROI) en todo el MCU.
+
+Encabezan la lista Endgame, Black Panther, y No Way Home, demostrando que el impacto cultural y el momentum estratégico pueden convertir una película en un fenómeno.
+
+También destacan casos como Iron Man y Ant-Man, que sin depender de un elenco coral o un evento masivo, lograron multiplicar su presupuesto varias veces.
+
+Esta sección revela que el éxito no siempre está en el presupuesto, sino en la propuesta, el marketing y la conexión emocional con el público.
+          </p>
+          <div id="chart" class="chart-container large-chart"></div>
+          <p class="section-summary">
+            Desde los héroes fundacionales hasta los inesperados triunfos, este ranking celebra la rentabilidad por encima de todo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+   <!-- CONCLUSIÓN -->
+<section id="conclusion" class="section reveal glass-card content-right dark-bg">
+  <div class="section-with-side-image">
+    <div class="content-container">
+      <h2 class="section-title">Conclusión Final</h2>
+      <p class="section-description">
+A través de los gráficos y datos analizados, queda claro que el Universo Cinematográfico de Marvel es más que una colección de películas: es una estrategia de construcción narrativa y económica sin precedentes.
+
+Su evolución muestra cómo una saga puede mantener la atención del público por más de una década, adaptándose a los tiempos, ampliando su universo y apostando por diversidad e innovación.
+
+La rentabilidad, la crítica y la taquilla son solo algunas dimensiones de un fenómeno que sigue escribiéndose.      </p>
+      <p class="section-summary">
+        Esta exploración de datos nos deja una lección clara: el éxito sostenido del MCU es fruto de estrategia, reinvención constante y conexión emocional con el público. 
+        No todas las películas fueron iguales en crítica o retorno, pero juntas construyeron un universo sin precedentes.
+      </p>
+    </div>
+    <img src="assets/marvel-studios-logo.png" alt="MCU Créditos Finales" class="side-image right" />
+  </div>
+</section>
+
+  <footer class="footer">
+    <p>© Marvel Data Storytelling - Desarrollado por Alejandro Alava y Carmen Valeriano</p>
+  </footer>
+
+  <!-- Script principal -->
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
